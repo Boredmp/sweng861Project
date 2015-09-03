@@ -17,10 +17,12 @@ package com.myjeeva.maven;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -101,6 +103,7 @@ public class RootResource {
     
     public List<ValidationBean> getAllValidatedLines() throws IOException{
     	List<ValidationBean> allValidatedLines = new ArrayList<ValidationBean>();
+    	OutputStream os = null;
     	InputStream file = null;
     	BufferedReader br = null;
 		try {
@@ -112,8 +115,10 @@ public class RootResource {
 	
 			String line;
 			while ((line = br.readLine()) != null) {
-				ValidationBean vb = new ValidationBean(line);
+				ValidationBean vb = new ValidationBean(line, 0);
 				allValidatedLines.add(vb);
+				os = System.out;
+				printValidations(os, vb);
 			}
 		} catch (IOException e) {
 			LOG.error("getAllValidatedLines() - IOException:" + e);
@@ -123,7 +128,15 @@ public class RootResource {
 		}
 		return allValidatedLines;
     }
-
+    public void printValidations(OutputStream os, ValidationBean vb){
+    	PrintWriter pw = new PrintWriter(os);
+    	pw.write("<ValidationBean>");
+    	pw.write("    <line>"+vb.getLine()+"</line>");
+    	pw.write("    <isHashTagOrBlankLine>"+vb.isHashTagOrBlankLine()+"</isHashTagOrBlankLine>");
+    	pw.write("    <isNotMultipleHashTags>"+vb.isNotMultipleHashTags()+"</isNotMultipleHashTags>");
+    	pw.write("    <isSequenceInOrder>"+vb.isSequenceInOrder(0)+"</isSequenceInOrder>");
+    	pw.write("</ValidationBean>");
+    }
     /**
      * Using HTTP PUT, we can can upload the XML representation of a customer object.  This operation will be mapped
      * to the method below and the XML representation will get unmarshaled into a real Customer object using JAXB.
