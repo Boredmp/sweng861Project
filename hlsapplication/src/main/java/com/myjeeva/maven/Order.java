@@ -42,7 +42,7 @@ import org.slf4j.LoggerFactory;
 @XmlRootElement(name = "Order")
 public class Order {
 
-    private static final Logger LOG = LoggerFactory.getLogger(CustomerService.class);
+    private static final Logger LOG = LoggerFactory.getLogger(RootResource.class);
 
     private long id;
     private String description;

@@ -32,7 +32,7 @@ http://cxf.apache.org/schemas/jaxrs.xsd">
 
   <jaxrs:server id="services" address="/">
     <jaxrs:serviceBeans>
-      <bean class="com.myjeeva.maven.CustomerService"/>
+      <bean class="com.myjeeva.maven.RootResource"/>
     </jaxrs:serviceBeans>
 
     <jaxrs:providers>

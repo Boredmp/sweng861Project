@@ -37,9 +37,9 @@ import java.net.URL;
  */
 public final class CrmTest {
 
-    public static final String CUSTOMER_TEST_URL = "http://localhost:8080/rest-war/cxf/customerservice/customers/123";
-    public static final String PRODUCT_ORDER_TEST_URL = "http://localhost:8080/rest-war/cxf/customerservice/orders/223/products/323";
-    public static final String CUSTOMER_SERVICE_URL = "http://localhost:8080/rest-war/cxf/customerservice/customers";
+    public static final String CUSTOMER_TEST_URL = "http://localhost:8080/hlsapplication/cxf/customerservice/customers/123";
+    public static final String PRODUCT_ORDER_TEST_URL = "http://localhost:8080/hlsapplication/cxf/customerservice/orders/223/products/323";
+    public static final String CUSTOMER_SERVICE_URL = "http://localhost:8080/hlsapplication/customerservice/customers";
     private static final Logger LOG = LoggerFactory.getLogger(CrmTest.class);
     private URL url;
     private InputStream in;
@@ -122,7 +122,7 @@ public final class CrmTest {
     @Test
     public void postCustomerTestJson() throws IOException {
         LOG.info("Sent HTTP POST request to add customer");
-        String inputFile = this.getClass().getResource("/add_customer.json").getFile();
+        String inputFile = this.getClass().getResource("/add_customer.xml").getFile();
         File input = new File(inputFile);
         PostMethod post = new PostMethod(CUSTOMER_SERVICE_URL);
         post.addRequestHeader("Accept", "application/json");
