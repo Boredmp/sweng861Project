@@ -20,9 +20,6 @@ public class M3u8Bean {
 	public void setSbMain(StringBuffer sbMain) {
 		this.sbMain = sbMain;
 	}
-	public  URL getUrl() {
-		return url;
-	}
 	public  void setUrl(String url) {
 		try {
 			this.url = new URL(url);
@@ -50,24 +47,24 @@ public class M3u8Bean {
 		}
 		return sb;
 	}
-	public  void setOutputFile(StringBuffer sb) throws IOException{
-		PrintWriter writer = null;
-		BufferedWriter bwr = null;
-		try {
-			writer = new PrintWriter("src/main/resources/output.txt", "UTF-8");
-			bwr = new BufferedWriter(writer);
-	        //write contents of StringBuffer to a file
-	        bwr.write(sb.toString());
-		} catch (FileNotFoundException | UnsupportedEncodingException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}finally{
-	        //flush the stream
-	        bwr.flush();
-	        //close the stream
-	        bwr.close();
-		}
-	}
+//	public  void setOutputFile(StringBuffer sb) throws IOException{
+//		PrintWriter writer = null;
+//		BufferedWriter bwr = null;
+//		try {
+//			writer = new PrintWriter("src/main/resources/output.txt", "UTF-8");
+//			bwr = new BufferedWriter(writer);
+//	        //write contents of StringBuffer to a file
+//	        bwr.write(sb.toString());
+//		} catch (FileNotFoundException | UnsupportedEncodingException e) {
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}finally{
+//	        //flush the stream
+//	        bwr.flush();
+//	        //close the stream
+//	        bwr.close();
+//		}
+//	}
 
 }

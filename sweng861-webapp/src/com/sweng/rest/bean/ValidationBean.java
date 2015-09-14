@@ -32,21 +32,14 @@ public class ValidationBean {
 		
 		return success;
 	}
-	public void setSequenceInOrder(boolean isSequenceInOrder) {
-		this.isSequenceInOrder = isSequenceInOrder;
-	}
 	public boolean isHashTagOrBlankLine() {
 		return (getFirstChar().equals("#") || getFirstChar().isEmpty()) ? true : false;
 	}
-	public void setHashTagOrBlankLine(boolean isHashTagOrBlankLine) {
-		this.isHashTagOrBlankLine = isHashTagOrBlankLine;
-	}
+
 	public boolean isNotMultipleHashTags() {
 		return !isMultipleOccurances("#");
 	}
-	public void setNotMultipleHashTags(boolean isNotMultipleHashTags) {
-		this.isNotMultipleHashTags = isNotMultipleHashTags;
-	}
+
 	public String getFirstChar(){
 		String first = line.substring(0,1);
 		return first;
