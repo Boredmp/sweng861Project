@@ -23,20 +23,19 @@ public class RootResource {
     @Produces("application/xml")
     public String getValidation() throws IOException {
         LOG.info("Set the file and validate", "");
-        M3u8Bean mBean = new M3u8Bean();
         SwengImpl sImpl = new SwengImpl();
-        StringBuffer sb = null;
 	
-		try {
-			mBean.setUrl("http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8");
+//		try {
+			//mBean.setUrl("http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8");
+			//mBean.setUrl("file:///C:/Users/cbraam/Downloads/ipadipad-high.m3u8");
 			//M3u8Bean.setUrl(url);
-			sb = mBean.getM3u8File();
-			mBean.setSbMain(sb);
+			//sb = mBean.getM3u8File();
+			//mBean.setSbMain(sb);
 			
-		} catch (IOException e) {
-			LOG.error("getValidation() - IOException:" + e);
-		}
-        return sImpl.getAllValidatedLines(sb);
+//		} catch (IOException e) {
+//			LOG.error("getValidation() - IOException:" + e);
+//		}
+        return sImpl.getValidatedXML("file:///C:/Users/cbraam/Downloads/ipad.m3u8");
     }
 	@GET
 	@Produces(MediaType.TEXT_PLAIN)

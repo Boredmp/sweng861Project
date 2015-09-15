@@ -26,14 +26,19 @@ public class ValidationBean {
 	}
 	public boolean isSequenceInOrder(int oldSeq) {
 		boolean success = false;
-		if(oldSeq < getSequenceNumber()){
+		if(!line.isEmpty()){
+			int newSeq = getSequenceNumber();
+			if(oldSeq < newSeq){
+				success = true;
+			}
+		}else{
 			success = true;
 		}
 		
 		return success;
 	}
 	public boolean isHashTagOrBlankLine() {
-		return (getFirstChar().equals("#") || getFirstChar().isEmpty()) ? true : false;
+		return (line.isEmpty()) ? true : false || getFirstChar().equals("#");
 	}
 
 	public boolean isNotMultipleHashTags() {
@@ -53,10 +58,9 @@ public class ValidationBean {
 	}
 
 	public int getSequenceNumber(){
+		final ArrayList<Integer> ints = new ArrayList<Integer>(); // results
 		final Pattern pattern = Pattern.compile("\\d+"); // the regex
 		final Matcher matcher = pattern.matcher(line); // your string
-
-		final ArrayList<Integer> ints = new ArrayList<Integer>(); // results
 
 		while (matcher.find()) { // for each match
 		    ints.add(Integer.parseInt(matcher.group())); // convert to int
