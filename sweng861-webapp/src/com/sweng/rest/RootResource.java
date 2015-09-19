@@ -4,14 +4,12 @@ import java.io.IOException;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.sweng.rest.bean.M3u8Bean;
 import com.sweng.rest.impl.SwengImpl;
 
 @Path("/")
@@ -25,17 +23,11 @@ public class RootResource {
         LOG.info("Set the file and validate", "");
         SwengImpl sImpl = new SwengImpl();
 	
-//		try {
-			//mBean.setUrl("http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8");
-			//mBean.setUrl("file:///C:/Users/cbraam/Downloads/ipadipad-high.m3u8");
-			//M3u8Bean.setUrl(url);
-			//sb = mBean.getM3u8File();
-			//mBean.setSbMain(sb);
-			
-//		} catch (IOException e) {
-//			LOG.error("getValidation() - IOException:" + e);
-//		}
-        return sImpl.getValidatedXML("file:///C:/Users/cbraam/Downloads/ipad.m3u8");
+		return sImpl.getValidatedXML("http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8");
+
+        //return sImpl.getValidatedXML("file:///C:/Users/cbraam/Downloads/ipad.m3u8");
+        //return sImpl.getValidatedXML("file:///C:/Users/cbraam/Downloads/ipadipad-high.m3u8");
+        //return sImpl.getValidatedXML("file:///C:/Users/cbraam/Downloads/ipadipad-med.m3u8");
     }
 	@GET
 	@Produces(MediaType.TEXT_PLAIN)
